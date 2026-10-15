@@ -17,9 +17,12 @@ jobs:
         with:
           path: repo
 
+      - name: Install CURL
+        run: winget install --id Curl.Curl -e --silent --accept-source-agreements
+
       - name: Configure CMake
         working-directory: ${{ github.workspace }}\repo
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCURL_DIR=C:\Program Files\Curl\lib\cmake\CURL
 
       - name: Build
         working-directory: ${{ github.workspace }}\repo
